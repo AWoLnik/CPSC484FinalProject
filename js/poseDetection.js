@@ -1,1 +1,1 @@
-console.log("Hello this is pose detection");
+//JavaScript code for pose detection

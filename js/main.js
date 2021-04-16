@@ -1,1 +1,1 @@
-console.log("Hello this is the main JavaScript file");
+//JavaScript code for general stuff (feel free to create extra files)
