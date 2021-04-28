@@ -47,6 +47,7 @@
           frames.socket = new WebSocket(url);
           frames.socket.onmessage = function(event) {
             let data = JSON.parse(event.data);
+            handleData(data);
             // clear the canvas
             ctx.clearRect(0, 0, c.width, c.height);
 

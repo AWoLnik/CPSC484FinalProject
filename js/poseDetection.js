@@ -23,6 +23,11 @@ const poseData = { //Angles for each of the exercises. Each set of angles repres
     ]
 }
 var count = {};
+var maxCount = {
+    squat: 0,
+    pushup: 0,
+    situp: 0,
+};
 const handleData = (data) => { //Called by main, where the connection to the socket is made
     if(data.people){
         for(let personID in data.people){ //Cycles through each visible person
@@ -75,6 +80,10 @@ const handlePerson = (person) => {
                 if(poseStage == 0 && countPose.lastPosition == poseData[poseKey].length-1){ //Handling the last pose to the first (one completed exercise)
                     countPose.lastPosition = 0;
                     countPose.count++;
+                    if(countPose.count > maxCount[poseKey]){
+                        maxCount[poseKey] = countPose.count;
+                    }
+                    //Function call to update leaderboard goes here
                 }
                 else if(poseStage == countPose.lastPosition+1){ //Person has succeeded one stage and must complete next
                     countPose.lastPosition = poseStage;
