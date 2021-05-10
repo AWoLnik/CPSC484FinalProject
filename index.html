@@ -13,7 +13,7 @@
 </head>
   <body>
     <div style="width:100%; text-align:center;">
-        <canvas id="draw" height="800" width="1600" style="border: 1px solid #111111; margin: auto"/>
+        <canvas id="draw" height="900" width="1600" style="background-color: #3a1ea1; margin: auto"/>
       </div>
       <div class="people_counter"></div>
     <script src="js/main.js"></script>
@@ -58,10 +58,17 @@
             var person_scale = 0.25;
             if (data.people) {
               var num_people = Object.keys(data.people).length;
-              $('.people_counter').text(`I see ${num_people} people`);
               //console.log(num_people);
               for (const [idx, person] of Object.entries(data.people)) {
-                ctx.strokeStyle = ctx.fillStyle = colors[i++];
+                ctx.strokeStyle = ctx.fillStyle = '#ffffff';
+                ctx.lineWidth = 2;
+
+                var countX = (person.keypoints.LShoulder[0]*person_scale * (-1) + origin[0] + person.keypoints.RShoulder[0]*person_scale * (-1) + origin[0])/2;
+                var countY = (person.keypoints.LShoulder[1]*person_scale + origin[1] + person.keypoints.RShoulder[1]*person_scale + origin[1])/2 - 50;
+
+                ctx.font = "25px Arial";
+                ctx.fillText("Squats: " + count[person.idx].squat.count, countX - 50, countY);
+
                 ctx.beginPath();
 
                 canvas_line(ctx,
@@ -159,42 +166,42 @@
       }
 
       // Setup an array of colors
-      var tc = tinycolor({
-        r: Math.floor(Math.random() * 0xFF),
-        g: Math.floor(Math.random() * 0xFF),
-        b: Math.floor(Math.random() * 0xFF)
-      });
-      colors = [];
-      var parts = 2 + Math.floor(Math.random() * 5);
-      for (var i = 0; i < parts; i++) {
-        tc = tc.spin(360 / parts);
-        colors.push('#' + tc.toHex());
-      }
+      // var tc = tinycolor({
+      //   r: Math.floor(Math.random() * 0xFF),
+      //   g: Math.floor(Math.random() * 0xFF),
+      //   b: Math.floor(Math.random() * 0xFF)
+      // });
+      // colors = [];
+      // var parts = 2 + Math.floor(Math.random() * 5);
+      // for (var i = 0; i < parts; i++) {
+      //   tc = tc.spin(360 / parts);
+      //   colors.push('#' + tc.toHex());
+      // }
 
       // Draw the environment
       function drawEnv(ctx, origin) {
-        var cameraSizeCM = [15, 5];
+        // var cameraSizeCM = [15, 5];
 
-        ctx.strokeStyle = ctx.fillStyle = '#333333';
-        ctx.fillRect(origin[0], origin[1]-cameraSizeCM[1]/2, cameraSizeCM[0], cameraSizeCM[1])
+        // ctx.strokeStyle = ctx.fillStyle = '#333333';
+        // ctx.fillRect(origin[0], origin[1]-cameraSizeCM[1]/2, cameraSizeCM[0], cameraSizeCM[1])
 
-        ctx.font = "25px Arial";
-        ctx.fillText("x", 90, 20);
-        ctx.fillText("y", 8, 100);
-        ctx.beginPath();
-        canvas_arrow(ctx, 14, 14, 14, 80);
-        canvas_arrow(ctx, 14, 14, 80, 14);
-        ctx.stroke();
+        // ctx.font = "25px Arial";
+        // ctx.fillText("x", 90, 20);
+        // ctx.fillText("y", 8, 100);
+        // ctx.beginPath();
+        // canvas_arrow(ctx, 14, 14, 14, 80);
+        // canvas_arrow(ctx, 14, 14, 80, 14);
+        // ctx.stroke();
 
-        ctx.beginPath();
-        ctx.strokeStyle = ctx.fillStyle = '#0000FF';
-        canvas_arrow(ctx, origin[0]+cameraSizeCM[0]/2, 1.5, origin[0]+cameraSizeCM[0]/2, 20);
-        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.strokeStyle = ctx.fillStyle = '#0000FF';
+        // canvas_arrow(ctx, origin[0]+cameraSizeCM[0]/2, 1.5, origin[0]+cameraSizeCM[0]/2, 20);
+        // ctx.stroke();
 
-        ctx.beginPath();
-        ctx.strokeStyle = ctx.fillStyle = '#FF0000';
-        canvas_arrow(ctx, origin[0]+cameraSizeCM[0]/2, 1.5, origin[0]+cameraSizeCM[0]/2-20, 1.5);
-        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.strokeStyle = ctx.fillStyle = '#FF0000';
+        // canvas_arrow(ctx, origin[0]+cameraSizeCM[0]/2, 1.5, origin[0]+cameraSizeCM[0]/2-20, 1.5);
+        // ctx.stroke();
       }
 
     </script>
