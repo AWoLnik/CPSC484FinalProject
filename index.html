@@ -12,18 +12,64 @@
     </style>
 </head>
   <body>
-    <div style="width:100%; text-align:center;">
-        <canvas id="draw" height="900" width="1600" style="background-color: #3a1ea1; margin: auto"/>
+    <div style = "width: 100%">
+      <div style = "width: 100">
+        <table>
+          <tr>
+            <th>Squats</th>
+          </tr>
+          <tr>
+            <td id="squat_count">placeholder</td>
+            <script>
+              var squat_count = document.getElementById("squat_count");
+              squat_count.innerHTML = maxCount[squat];
+              </script>
+            <td><script>squat_count</script></td>
+          </tr>
+          <tr>
+          <th>Push Ups</th>
+          </tr>
+
+          <tr>
+            <td id="pushup_count">placeholder</td>
+            <script>
+              var squat_count = document.getElementById("pushup_count");
+              squat_count.innerHTML = maxCount[pushup];
+              </script>
+            <td><script>squat_count</script></td>
+            </tr>
+          <tr>
+          <th>Sit Ups</th>
+          </tr>       
+          <tr>
+            <td id="situp_count">placeholder</td>
+            <script>
+              var squat_count = document.getElementById("situp_count");
+              squat_count.innerHTML = maxCount[situp];
+              </script>
+            <td><script>squat_count</script></td>
+            </tr>
+          </table>
+        </div>
+      <div style="margin-left: 10%; text-align:center;">
+          <canvas id="draw" height="900" width="1500" style="background-color: #3a1ea1; margin: auto"/>
+        </div>
       </div>
       <div class="people_counter"></div>
     <script src="js/main.js"></script>
     <script src="js/poseDetection.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.1/tinycolor.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+
+  
+    
+
+
     <script type="text/javascript">
       $(document).ready(function() {
           frames.start();
       });
+
 
       var frames = {
         socket: null,
