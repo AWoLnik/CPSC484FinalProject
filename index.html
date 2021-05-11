@@ -20,11 +20,11 @@
           </tr>
           <tr>
             <td id="squat_count">placeholder</td>
-            <script>
+            <!-- <script>
               var squat_count = document.getElementById("squat_count");
               squat_count.innerHTML = maxCount[squat];
               </script>
-            <td><script>squat_count</script></td>
+            <td><script>squat_count</script></td> -->
           </tr>
           <tr>
           <th>Push Ups</th>
@@ -32,22 +32,22 @@
 
           <tr>
             <td id="pushup_count">placeholder</td>
-            <script>
+            <!-- <script>
               var squat_count = document.getElementById("pushup_count");
               squat_count.innerHTML = maxCount[pushup];
               </script>
-            <td><script>squat_count</script></td>
+            <td><script>squat_count</script></td> -->
             </tr>
           <tr>
           <th>Sit Ups</th>
           </tr>       
           <tr>
             <td id="situp_count">placeholder</td>
-            <script>
+            <!-- <script>
               var squat_count = document.getElementById("situp_count");
               squat_count.innerHTML = maxCount[situp];
               </script>
-            <td><script>squat_count</script></td>
+            <td><script>squat_count</script></td> -->
             </tr>
           </table>
         </div>
@@ -84,6 +84,17 @@
           // canvas object
           var c = document.getElementById("draw");
           var ctx = c.getContext("2d");
+          
+          // update leaderboard
+          var squat_count = document.getElementById("squat_count");
+          squat_count.innerHTML = 0;
+
+          var pushup_count = document.getElementById("pushup_count");
+          pushup_count.innerHTML = 0;
+
+          var situp_count = document.getElementById("situp_count");
+          situp_count.innerHTML = 0;
+
           // all real-world units are in mm unless denoted by CM
           var personRadiusCM = 30;
           // origin (x,y)
